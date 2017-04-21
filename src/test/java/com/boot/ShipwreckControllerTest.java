@@ -12,7 +12,9 @@ import org.mockito.MockitoAnnotations;
 import org.mockito.runners.MockitoJUnitRunner;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -38,6 +40,7 @@ public class ShipwreckControllerTest {
 
         Shipwreck sw = shipwreckController.get(1L);
         verify(shipwreckRepository).findOne(1L);
-        assertEquals(1L, sw.getId().longValue());
+        //assertEquals(1L, sw.getId().longValue());
+        assertThat(sw.getId(), is(1L));
     }
 }
